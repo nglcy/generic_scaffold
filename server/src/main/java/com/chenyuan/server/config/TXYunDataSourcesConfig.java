@@ -11,6 +11,8 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 
@@ -52,5 +54,9 @@ public class TXYunDataSourcesConfig {
     public SqlSessionTemplate test2sqlsessiontemplate(
             @Qualifier("txyunSqlSessionFactory") SqlSessionFactory sessionfactory) {
         return new SqlSessionTemplate(sessionfactory);
+    }
+    @Bean("txyunTransactionManager")
+    public PlatformTransactionManager getLocalTransactionManager(@Qualifier("txyunDataSource") DataSource dataSource){
+        return  new DataSourceTransactionManager(dataSource);
     }
 }

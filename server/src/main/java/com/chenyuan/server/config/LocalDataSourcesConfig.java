@@ -12,6 +12,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
 
@@ -23,7 +26,6 @@ import javax.sql.DataSource;
  */
 @Configuration
 @MapperScan(basePackages = "com.chenyuan.dao.mapper.local", sqlSessionFactoryRef = "localSqlSessionFactory")
-
 public class LocalDataSourcesConfig { // 将这个对象放入Spring容器中
 
     @Autowired
@@ -64,5 +66,10 @@ public class LocalDataSourcesConfig { // 将这个对象放入Spring容器中
     public SqlSessionTemplate localsqlsessiontemplate(
             @Qualifier("localSqlSessionFactory") SqlSessionFactory sessionfactory) {
         return new SqlSessionTemplate(sessionfactory);
+    }
+
+    @Bean("localTransactionManager")
+    public PlatformTransactionManager getLocalTransactionManager(@Qualifier("localDataSource") DataSource dataSource){
+        return  new DataSourceTransactionManager(dataSource);
     }
 }
