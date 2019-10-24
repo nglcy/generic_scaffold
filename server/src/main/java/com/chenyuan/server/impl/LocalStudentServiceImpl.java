@@ -24,4 +24,9 @@ public class LocalStudentServiceImpl implements LocalStudentService {
     public List<Student> findList() {
         return localStudentMapper.selectAll();
     }
+
+    @Override
+    public Student findStudent(int id) {
+        return localStudentMapper.selectByPrimaryKey(id);
+    }
 }

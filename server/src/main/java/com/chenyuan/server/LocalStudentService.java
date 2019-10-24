@@ -15,4 +15,6 @@ public interface LocalStudentService {
 
 
     public List<Student> findList();
+
+    Student findStudent(int i);
 }
