@@ -25,7 +25,7 @@ public class WebApplicationTests {
     private LocalStudentService localStudentService;
 
     @Test
-    public void contextLoads() throws InterruptedException {
+    public void contextLoads(){
         System.out.println("---------------");
         CompletableFuture<Integer> integerCompletableFuture = CompletableFuture.supplyAsync(() -> localStudentService.insert(new Student(29, "hello", "java", 1, 2)));
         System.out.println("0000000000000000000000000000000");
@@ -36,6 +36,7 @@ public class WebApplicationTests {
         log.info(i + "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
         Assert.assertEquals(1, i);
     }
+
 
 //    @Autowired
 //    private RedisManager redisManager;
@@ -57,9 +58,9 @@ public class WebApplicationTests {
     @Test
     public void testRedis() {
         String key = "hello3";
-        redisService.set(key,"BBB");
-        String aaa = (String)redisService.get(key);
-        Assert.assertEquals("BBB",aaa);
+        redisService.set(key, "BBB");
+        String aaa = (String) redisService.get(key);
+        Assert.assertEquals("BBB", aaa);
 //        log.info(aaa.toString());
 //        redisTemplate
     }

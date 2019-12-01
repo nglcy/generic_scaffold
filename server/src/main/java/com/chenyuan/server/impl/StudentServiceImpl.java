@@ -32,6 +32,8 @@ public class StudentServiceImpl implements StudentService {
         }
 //        int txYunInsertCount = txYunStudentMapper.insert(student);
 //        return (localInsertCount > 0 && txYunInsertCount >0) ? 1: 0 ;
-        return  localInsertCount;
+        int txYunInsertCount = txYunStudentMapper.insert(student);
+        return (localInsertCount > 0 && txYunInsertCount >0) ? 1: 0 ;
+
     }
 }

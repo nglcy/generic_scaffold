@@ -28,19 +28,21 @@ public class StudentServicelTest {
     private StudentServiceImpl studentService;
     @Autowired
     private LocalStudentService localStudentService;
+    @Autowired
+
     @Test
-    public void saveStudentToMultiDataSources(){
+    public void saveStudentToMultiDataSources() {
 
         int i = studentService.saveStudentToMultiDataSources(new Student(6, "尘缘", "杭州", 23, 2), true
         );
-        log.info(i+"");
-        Assert.assertEquals(1,i);
+        log.info(i + "");
+        Assert.assertEquals(1, i);
     }
-//
-//    @Test
-//    public void  findStudentByIdTest(){
-//        StudentVO studentById = localStudentService.findStudentById(1);
-//        System.out.println(studentById.toString());
-//    }
+
+    @Test
+    public void  findStudentByIdTest(){
+        StudentVO studentById = localStudentService.findStudentById(1);
+        System.out.println(studentById.toString());
+    }
 }
 
