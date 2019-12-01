@@ -32,8 +32,5 @@ public class LocalStudentServicelTest {
 
     @Autowired
     private LocalStudentService localStudentService;
-    @Test
-    public void findStudentByIdTest(){
-        localStudentService.findStudent(1);
-    }
+
 }

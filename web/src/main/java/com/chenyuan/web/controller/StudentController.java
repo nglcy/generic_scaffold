@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.chenyuan.entity.DO.Student;
 import com.chenyuan.server.LocalStudentService;
 import com.chenyuan.server.TXYunStudentService;
+import com.chenyuan.server.common.result.StudentVO;
 import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -42,10 +43,18 @@ public class StudentController {
         return localStudentService.findList();
     }
 
+    @GetMapping("findStudent/{id}")
+    public StudentVO findStudentById(@PathVariable("id")Integer id){
+        return localStudentService.findStudentById(id);
+    }
+
 //    @GetMapping("txyun")
     @PostMapping("txyun")
     public int save(@RequestBody Student student){
 //        Student student = new Student(6, "尘缘", "杭州", 23, 2);
         return txYunStudentService.save(student);
     }
+
+
 }
+

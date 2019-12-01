@@ -1,6 +1,7 @@
 package com.chenyuan.server;
 
 import com.chenyuan.entity.DO.Student;
+import com.chenyuan.server.common.result.StudentVO;
 
 import java.util.List;
 
@@ -12,9 +13,8 @@ import java.util.List;
  */
 
 public interface LocalStudentService {
+    List<Student> findList();
 
-
-    public List<Student> findList();
-
-    Student findStudent(int i);
+    StudentVO findStudentById(Integer id);
+    int insert(Student student);
 }

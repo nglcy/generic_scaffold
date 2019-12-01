@@ -24,7 +24,6 @@ import javax.sql.DataSource;
  */
 @Configuration
 @MapperScan(basePackages = "com.chenyuan.dao.mapper.txyun", sqlSessionFactoryRef = "txyunSqlSessionFactory")
-
 public class TXYunDataSourcesConfig {
     @Autowired
     private TXYunDataProperties tdp;

@@ -1,6 +1,8 @@
 package com.chenyuan.server;
 
 import com.chenyuan.entity.DO.Student;
+import com.chenyuan.server.common.result.StudentVO;
+import com.chenyuan.server.impl.StudentServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
@@ -17,13 +19,15 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = StudentService.class)
+@SpringBootTest(classes = {StudentServiceImpl.class})
 @Slf4j
 
 public class StudentServicelTest {
 
     @Autowired
-    private StudentService studentService;
+    private StudentServiceImpl studentService;
+    @Autowired
+    private LocalStudentService localStudentService;
     @Test
     public void saveStudentToMultiDataSources(){
 
@@ -32,4 +36,11 @@ public class StudentServicelTest {
         log.info(i+"");
         Assert.assertEquals(1,i);
     }
+//
+//    @Test
+//    public void  findStudentByIdTest(){
+//        StudentVO studentById = localStudentService.findStudentById(1);
+//        System.out.println(studentById.toString());
+//    }
 }
+

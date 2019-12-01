@@ -30,7 +30,8 @@ public class StudentServiceImpl implements StudentService {
         if (!exceptionFlag) {
             throw  new RuntimeException("本地保存失败，请重试...");
         }
-        int txYunInsertCount = txYunStudentMapper.insert(student);
-        return (localInsertCount > 0 && txYunInsertCount >0) ? 1: 0 ;
+//        int txYunInsertCount = txYunStudentMapper.insert(student);
+//        return (localInsertCount > 0 && txYunInsertCount >0) ? 1: 0 ;
+        return  localInsertCount;
     }
 }
