@@ -27,14 +27,14 @@ public class WebApplicationTests {
     @Test
     public void contextLoads(){
         System.out.println("---------------");
-        CompletableFuture<Integer> integerCompletableFuture = CompletableFuture.supplyAsync(() -> localStudentService.insert(new Student(29, "hello", "java", 1, 2)));
+//        CompletableFuture<Integer> integerCompletableFuture = CompletableFuture.supplyAsync(() -> localStudentService.insert(new Student(29, "hello", "java", 1, 2.0)));
         System.out.println("0000000000000000000000000000000");
 
 
-        int i = studentService.saveStudentToMultiDataSources(new Student(27, "尘缘", "杭州", 23, 2), true
-        );
-        log.info(i + "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
-        Assert.assertEquals(1, i);
+//        int i = studentService.saveStudentToMultiDataSources(new Student(27, "尘缘", "杭州", 23, 2.0), true
+//        );
+//        log.info(i + "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+//        Assert.assertEquals(1, i);
     }
 
 

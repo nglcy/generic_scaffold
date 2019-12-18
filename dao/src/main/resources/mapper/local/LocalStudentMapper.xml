@@ -23,8 +23,8 @@
   <insert id="insert" parameterType="com.chenyuan.entity.DO.Student" >
     insert into student (id, stu_name, address, 
       age, num)
-    values (#{id,jdbcType=INTEGER}, #{stuName,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR},
-      #{age,jdbcType=INTEGER}, #{num,jdbcType=INTEGER})
+    values (#{id}, #{stuName}, #{address},
+      #{age}, #{num})
   </insert>
   <insert id="insertSelective" parameterType="com.chenyuan.entity.DO.Student" >
     insert into student

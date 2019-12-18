@@ -4,8 +4,10 @@ package com.chenyuan.web.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.chenyuan.entity.DO.Student;
 import com.chenyuan.server.LocalStudentService;
+import com.chenyuan.server.StudentService;
 import com.chenyuan.server.TXYunStudentService;
 import com.chenyuan.server.common.result.StudentVO;
+import org.apache.ibatis.annotations.Param;
 import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -54,6 +56,16 @@ public class StudentController {
 //        Student student = new Student(6, "尘缘", "杭州", 23, 2);
         return txYunStudentService.save(student);
     }
+    @PostMapping("/saveOne")
+    public String saveOneStudent(@RequestBody Student student){
+        Double dou = student.getDou();
+        if (dou != null) {
+            student.setNum(dou*100);
+        }
+        int insert = localStudentService.insert(student);
+        return insert>0 ?"success":"fail";
+    }
+
 
 
 }

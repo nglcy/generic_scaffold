@@ -40,7 +40,7 @@ public class LocalStudentServiceImpl implements LocalStudentService {
     @Override
     public int insert(Student student) {
         try {
-            TimeUnit.MILLISECONDS.sleep(50000);
+            TimeUnit.MILLISECONDS.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -16,6 +16,10 @@ public class Student {
 
     private Integer age;
 
-    private Integer num;
+    private Double num;
+    private Double dou;
+
+
+
 
 }
