@@ -1,28 +1,50 @@
 package com.chenyuan.web;
 
+import com.chenyuan.dao.mapper.local.LocalStudentMapper;
 import com.chenyuan.entity.DO.Student;
 import com.chenyuan.server.LocalStudentService;
 import com.chenyuan.server.RedisService;
 import com.chenyuan.server.StudentService;
+import com.chenyuan.server.common.RedisConfig;
+import com.chenyuan.server.config.LocalDataProperties;
+import com.chenyuan.server.config.LocalDataSourcesConfig;
+import com.chenyuan.server.impl.LocalStudentServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = {LocalDataSourcesConfig.class, MybatisAutoConfiguration.class, LocalStudentServiceImpl.class, LocalDataProperties.class})
+/**
+ *  这里指定的classes是可选的。如果不指定classes，则spring boot会启动整个spring容器，很慢（比如说会执行一些初始化，ApplicationRunner、CommandLineRunner等等）。不推荐
+ *  指定的话，就只会初始化指定的bean，速度快，推荐
+ */
 @Slf4j
+@TestPropertySource("classpath:application-mapper.properties")
+/**
+ 比如一个项目多人撰写，A同学要进行服务层的单元测试（需要一堆配置），B同学要进行数据库层面的单元测试（只需要本案例的配置），而且大家的配置可能还不一样？这时有没有B同学可以指定我不读test/recources/application.properties文件的办法（这个让给A），而是指定去读test/recources/mapper-application.properties的办法 **/
 public class WebApplicationTests {
-    @Autowired
-    private StudentService studentService;
+//    @Autowired
+//    private StudentService studentService;
 
     @Autowired
     private LocalStudentService localStudentService;
+
+    @Test
+    public void getStudent(){
+        localStudentService.findList().stream().forEach(System.out::println);
+    }
 
     @Test
     public void contextLoads(){
@@ -48,7 +70,7 @@ public class WebApplicationTests {
 //        System.out.println(s);
 //    }
 
-    @Autowired
+//    @Autowired
     private RedisService redisService;
 
 //    @Autowired
@@ -64,4 +86,7 @@ public class WebApplicationTests {
 //        log.info(aaa.toString());
 //        redisTemplate
     }
+
+
+
 }
