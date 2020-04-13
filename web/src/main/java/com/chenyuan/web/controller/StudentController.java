@@ -7,6 +7,7 @@ import com.chenyuan.server.LocalStudentService;
 import com.chenyuan.server.StudentService;
 import com.chenyuan.server.TXYunStudentService;
 import com.chenyuan.server.common.result.StudentVO;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Param;
 import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ import java.util.function.Consumer;
  * @Date 2019/10/13 23:24
  */
 @RestController
+@Slf4j
 public class StudentController {
     @Autowired
     private TXYunStudentService txYunStudentService;
@@ -54,6 +56,7 @@ public class StudentController {
     @PostMapping("txyun")
     public int save(@RequestBody Student student){
 //        Student student = new Student(6, "尘缘", "杭州", 23, 2);
+        log.info("student = {0}",student);
         return txYunStudentService.save(student);
     }
     @PostMapping("/saveOne")
