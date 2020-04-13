@@ -53,7 +53,9 @@ public class StudentController {
 //    @GetMapping("txyun")
     @PostMapping("txyun")
     public int save(@RequestBody Student student){
-//        Student student = new Student(6, "尘缘", "杭州", 23, 2);
+//        Student student = new Student(78, "123", "ss", 23, 2) ;new Student(6, "尘缘", "杭州", 23, 2);
+
+        System.out.println("123");
         return txYunStudentService.save(student);
     }
     @PostMapping("/saveOne")
